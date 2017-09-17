@@ -1,0 +1,33 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+<!--   <h1>Connected to MongoDB</h1>
+</div>
+
+<h2>List of books in Database:imports && Collection:books</h2>
+
+  
+<ul><li *ngFor="let book of books">
+    
+      Book: {{ book.title }} <br/>
+      Author: {{ book.author }} <br/>
+      Genre: {{ book.genre }}
+    </li>
+</ul>
+ -->
+
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Genre</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let book of books">
+    <td>{{book.title}}</td>
+    <td>{{book.author}}</td>
+    <td>{{book.genre}}</td>
+  </tr>
+  </tbody>
+</table>
