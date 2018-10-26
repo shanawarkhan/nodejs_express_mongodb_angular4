@@ -50,4 +50,4 @@ app.set('port', port);
 
 const server = http.createServer(app);
 
-server.listen(port, () => console.log(`Running server on http://127.0.0.1:${port}`));
+server.listen(port, () => console.log(`Running server on http://0.0.0.0:${port}`));

@@ -11,7 +11,7 @@ Two ways of starting application!
 
 2) start api with server.js
    start front end with ng-server
-   Go to http://localhost:4200
+   Go to http://0.0.0.0:4200
    Fixed Headers issue by modifying server.js with: 
 
    	app.use(function (req, res, next) {
