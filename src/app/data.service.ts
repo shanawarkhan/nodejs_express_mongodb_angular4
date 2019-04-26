@@ -16,5 +16,10 @@ export class DataService {
   	getBooks() {
     return this._http.get("http://localhost:3000/api/books")
       .map(result => this.result = result.json().data);
+  	}
+
+  	getRestaurants() {
+    return this._http.get("http://localhost:3000/api/restaurants")
+      .map(result => this.result = result.json().data);
   }
 }

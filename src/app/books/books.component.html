@@ -1,0 +1,19 @@
+<h1>
+  Books works!
+</h1>
+<table class="table">
+  <thead class="thead-dark table-striped table-bordered">
+    <tr>
+    <th scope="col">Title</th>
+    <th scope="col">Author</th>
+    <th scope="col">Genre</th>
+  </tr>
+  </thead>
+  <tbody class="table-striped table-bordered">
+  <tr *ngFor="let book of books">
+    <td>{{book.title}}</td>
+    <td>{{book.author}}</td>
+    <td>{{book.genre}}</td>
+  </tr>
+  </tbody>
+</table>

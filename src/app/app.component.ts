@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataService } from './data.service';
+// import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +9,14 @@ import { DataService } from './data.service';
 
 
 export class AppComponent {
-  title = 'Mean4plus app';
-  books: Array<any>;
+  title = 'MEAN STACK 4';
+  // books: Array<any>;
 
   // Dependency injection of data service through a Constructor
-  constructor(private _dataService: DataService) {
+  // constructor(private _dataService: DataService) {
 
-  	this._dataService.getBooks()
-  		.subscribe(res => this.books = res)
+  	// this._dataService.getBooks()
+  		// .subscribe(res => this.books = res)
 
-  }
+  // }
 }

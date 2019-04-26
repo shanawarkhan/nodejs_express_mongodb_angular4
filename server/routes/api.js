@@ -26,10 +26,26 @@ let response = {
     message: null
 };
 
-// Get users
+// Get Books
 router.get('/books', (req, res) => {
     connection((db) => {
         db.collection('books')
+            .find()
+            .toArray()
+            .then((users) => {
+                response.data = users;
+                res.json(response);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
+
+// Get Restaurants
+router.get('/restaurants', (req, res) => {
+    connection((db) => {
+        db.collection('restaurants')
             .find()
             .toArray()
             .then((users) => {

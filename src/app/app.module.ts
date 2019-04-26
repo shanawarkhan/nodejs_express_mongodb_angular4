@@ -5,14 +5,20 @@ import { AppComponent } from './app.component';
 
 import { HttpModule } from '@angular/http';
 import { DataService } from './data.service';
+import { BooksComponent } from './books/books.component';
+import { AppRoutingModule } from './app-routing.module';
+import { RestaurantsComponent } from './restaurants/restaurants.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BooksComponent,
+    RestaurantsComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
