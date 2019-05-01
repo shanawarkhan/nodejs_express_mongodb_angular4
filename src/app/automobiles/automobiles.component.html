@@ -1,0 +1,22 @@
+<h1>
+  Automobiles works!
+</h1>
+
+<table class="table">
+  <thead class="thead-dark table-striped table-bordered">
+    <tr>
+    <th scope="col">_id</th>
+    <th scope="col">Brand</th>
+    <th scope="col">Sports</th>
+    <th scope="col">Manufactured</th>
+  </tr>
+  </thead>
+  <tbody class="table-striped table-bordered">
+  <tr *ngFor="let automobile of automobiles">
+    <td>{{automobile._id}}</td>
+    <td>{{automobile.Brand}}</td>
+    <td>{{automobile.Sports}}</td>
+    <td>{{automobile.Manufactured}}</td>
+  </tr>
+  </tbody>
+</table>

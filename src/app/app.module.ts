@@ -8,12 +8,14 @@ import { DataService } from './data.service';
 import { BooksComponent } from './books/books.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
+import { AutomobilesComponent } from './automobiles/automobiles.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BooksComponent,
-    RestaurantsComponent
+    RestaurantsComponent,
+    AutomobilesComponent
   ],
   imports: [
     BrowserModule,

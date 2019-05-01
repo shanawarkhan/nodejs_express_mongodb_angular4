@@ -21,5 +21,10 @@ export class DataService {
   	getRestaurants() {
     return this._http.get("http://localhost:3000/api/restaurants")
       .map(result => this.result = result.json().data);
-  }
+    }
+    
+    getAutomobiles() {
+      return this._http.get("http://localhost:3000/apiz/automobiles")
+        .map(result => this.result = result.json().data);
+    }    
 }

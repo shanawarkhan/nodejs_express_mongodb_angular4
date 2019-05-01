@@ -7,7 +7,7 @@ const app = express();
 
 // Api file for interacting with MongoDB
 const api = require('./server/routes/api');
-
+const apiz = require('./server/routes/apiz');
 
 app.use(logger('dev'));
 app.use(function (req, res, next) {
@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 // Api location
 app.use('/api', api);
-
+app.use('/apiz', apiz)
 
 // Send all other requests to the angular app
 app.get('*', (req, res) => {
@@ -46,8 +46,9 @@ app.get('*', (req, res) => {
 
 // Set port
 const port = process.env.PORT || '3000';
+// const ip = '0.0.0.0';
 app.set('port', port);
-
+// app.set('ip', ip);
 const server = http.createServer(app);
 
 server.listen(port, () => console.log(`Running server on http://0.0.0.0:${port}`));
