@@ -1,0 +1,37 @@
+# SpeedTest using siege
+
+Normal Server
+=============
+$  siege -c100 -t60s http://localhost:3000
+
+Lifting the server siege...
+Transactions:		            7015 hits
+Availability:		          100.00 %
+Elapsed time:		           59.17 secs
+Data transferred:	            1.83 MB
+Response time:		            0.84 secs
+Transaction rate:	          118.56 trans/sec
+Throughput:		        		0.03 MB/sec
+Concurrency:		      	   99.00
+Successful transactions:           0
+Failed transactions:	           0
+Longest transaction:	        1.49
+Shortest transaction:	        0.00
+
+Cluster Server
+==============
+$  siege -c100 -t60s http://localhost:
+
+Lifting the server siege...
+Transactions:		        	7719 hits
+Availability:		      	  100.00 %
+Elapsed time:		       	   59.76 secs
+Data transferred:	        	2.02 MB
+Response time:		        	0.76 secs
+Transaction rate:	      	  129.17 trans/sec
+Throughput:		        		0.03 MB/sec
+Concurrency:		       	   98.46
+Successful transactions:           0
+Failed transactions:	           0
+Longest transaction:	        3.00
+Shortest transaction:	        0.00
