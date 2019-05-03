@@ -1,3 +1,4 @@
+var cluster = require('cluster');
 const express = require('express');
 const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
@@ -26,7 +27,7 @@ let response = {
     message: null
 };
 
-// Get Books
+// Get Automobiles
 router.get('/automobiles', (req, res) => {
     connection((db) => {
         db.collection('automobiles')

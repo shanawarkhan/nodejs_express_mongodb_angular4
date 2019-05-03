@@ -1,13 +1,38 @@
+// Include the cluster module
+var cluster = require('cluster');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
 const logger = require('morgan');
 const app = express();
+// Code to run if we're in the master process
+if (cluster.isMaster) {
+
+    // Count the machine's CPUs
+    var cpuCount = require('os').cpus().length;
+
+    // Create a worker for each CPU
+    for (var i = 0; i < cpuCount; i += 1) {
+        cluster.fork();
+    }
+
+    // Listen for dying workers
+    cluster.on('exit', function (worker) {
+
+        // Replace the dead worker, we're not sentimental
+        console.log('Worker %d died :(', worker.id);
+        cluster.fork();
+
+    });
+
+// Code to run if we're in a worker process
+} else { 
+
 
 // Api file for interacting with MongoDB
-const api = require('./server/routes/api');
-const apiz = require('./server/routes/apiz');
+const api = require('./server/routes_cluster/api');
+const apiz = require('./server/routes_cluster/apiz');
 
 app.use(logger('dev'));
 app.use(function (req, res, next) {
@@ -51,5 +76,7 @@ app.set('port', port);
 // app.set('ip', ip);
 const server = http.createServer(app);
 
-server.listen(port, () => console.log(`Running server on http://0.0.0.0:${port}`));
+server.listen(port, () => console.log(`Running server on http://0.0.0.0:${port}` + ' Worker %d running!: ', cluster.worker.id));
+    // console.log('Worker %d running!', cluster.worker.id);
 
+}

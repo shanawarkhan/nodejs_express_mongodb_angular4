@@ -1,3 +1,4 @@
+var cluster = require('cluster');
 const express = require('express');
 const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
@@ -26,26 +27,33 @@ let response = {
     message: null
 };
 
-// Get Books
-router.get('/books', (req, res) => {
-    connection((db) => {
-        db.collection('books')
-            .find()
-            .toArray()
-            .then((users) => {
-                response.data = users;
-                res.json(response );
-            })
-            .catch((err) => {
-                sendError(err, res);
-            });
-    });
-});
+// Code to run if we're in the master process
+if (cluster.isMaster) {
 
-// Get Restaurants
-router.get('/restaurants', (req, res) => {
+    // Count the machine's CPUs
+    var cpuCount = require('os').cpus().length;
+
+    // Create a worker for each CPU
+    for (var i = 0; i < cpuCount; i += 1) {
+        cluster.fork();
+    }
+
+    // Listen for dying workers
+    cluster.on('exit', function (worker) {
+
+        // Replace the dead worker, we're not sentimental
+        console.log('Worker %d died :(', worker.id);
+        cluster.fork();
+
+    });
+
+// Code to run if we're in a worker process
+} else {
+
+// Get Automobiles
+router.get('/automobiles', (req, res) => {
     connection((db) => {
-        db.collection('restaurants')
+        db.collection('automobiles')
             .find()
             .toArray()
             .then((users) => {
@@ -55,7 +63,8 @@ router.get('/restaurants', (req, res) => {
             .catch((err) => {
                 sendError(err, res);
             });
-    });
+        });
+    console.log('Request to worker %d', cluster.worker.id);
 });
-
+}
 module.exports = router;

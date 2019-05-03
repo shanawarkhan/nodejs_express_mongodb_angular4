@@ -1,3 +1,32 @@
+We are using 2 SERVER FILES 
+& SEPARATE ROUTES FOLDER FOR EACH SERVER FILE
+
+	one for simple server on port 3000
+		server.js
+		server/routes
+
+		Inside server.js
+			// Api file for interacting with MongoDB
+			const api = require('./server/routes/api');
+			const apiz = require('./server/routes/apiz');
+		
+	one for starting a cluster on port 3000 
+		server_cluster.js
+		server/routes_cluster
+
+		Inside server_cluster.js
+			// Api file for interacting with MongoDB
+			const api = require('./server/routes_cluster/api');
+			const apiz = require('./server/routes_cluster/apiz');
+
+
+
+
+
+
+
+
+
 # Ngapp
 Two ways of starting application!
 
